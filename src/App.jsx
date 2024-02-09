@@ -1,3 +1,5 @@
+import TravelPlans from "./COMPONENTS/TravelPlans";
+
 export default function App() {
-  return <h1>Hellow</h1>;
+  return <TravelPlans />;
 }
