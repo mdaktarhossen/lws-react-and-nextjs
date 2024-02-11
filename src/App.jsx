@@ -1,11 +1,11 @@
-import { useReducer } from "react";
+import { useImmerReducer } from "use-immer";
 import AddTask from "./COMPONENTS/AddTask";
 import TaskList from "./COMPONENTS/TASK/TaskList";
 import { initialTasks } from "./data/data";
 import taskReducer from "./reducer/taskReducer";
 
 export default function App() {
-  const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
+  const [tasks, dispatch] = useImmerReducer(taskReducer, initialTasks);
 
   //generating last id for handaling add task:
   const getNextId = (data) => {
