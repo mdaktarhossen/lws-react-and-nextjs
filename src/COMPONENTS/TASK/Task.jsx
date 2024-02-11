@@ -1,13 +1,22 @@
 import { useState } from "react";
 
 /* eslint-disable react/prop-types */
-export default function Task({ task }) {
+export default function Task({ task, onChangeTask, onDelete }) {
   const [isEdit, setIsEdit] = useState(false);
   let taskContent;
   if (isEdit) {
     taskContent = (
       <>
-        <input type="text" value={task.text} />
+        <input
+          type="text"
+          value={task.text}
+          onChange={(e) =>
+            onChangeTask({
+              ...task,
+              text: e.target.value,
+            })
+          }
+        />
         <button onClick={() => setIsEdit(false)}>Save</button>
       </>
     );
@@ -23,10 +32,19 @@ export default function Task({ task }) {
     <>
       <li>
         <label>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            value={task.done}
+            onChange={(e) =>
+              onChangeTask({
+                ...Task,
+                done: e.target.checked,
+              })
+            }
+          />
           {taskContent}
 
-          <button>Delete</button>
+          <button onClick={() => onDelete(task.id)}>Delete</button>
         </label>
       </li>
     </>

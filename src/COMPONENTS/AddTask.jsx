@@ -4,13 +4,11 @@ import { useState } from "react";
 
 export default function AddTask({ onAddTask }) {
   const [inputValue, setInputeValue] = useState("");
-  const handleValueChange = (e) => {
-    setInputeValue(e.target.value);
-  };
+
   return (
     <>
       <h1>Todo</h1>
-      <input placeholder="add task" value={inputValue} onChange={handleValueChange} />
+      <input placeholder="add task" value={inputValue} onChange={(e) => setInputeValue(e.target.value)} />
       <button
         onClick={() => {
           onAddTask(inputValue), setInputeValue("");

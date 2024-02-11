@@ -23,10 +23,25 @@ export default function App() {
     ]);
   };
 
+  const handleChange = (task) => {
+    const changeTask = tasks.map((t) => {
+      if (t.id === task.id) {
+        return task;
+      } else {
+        return t;
+      }
+    });
+    setTask(changeTask);
+  };
+
+  const handleDeleteTask = (taskId) => {
+    setTask(tasks.filter((t) => t.id !== taskId));
+  };
+
   return (
     <>
       <AddTask onAddTask={handleAddTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onChangeTask={handleChange} onDelete={handleDeleteTask} />
     </>
   );
 }
