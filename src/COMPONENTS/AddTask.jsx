@@ -3,15 +3,15 @@
 import { useState } from "react";
 
 export default function AddTask({ onAddTask }) {
-  const [inputValue, setInputeValue] = useState("");
+  const [text, setText] = useState("");
 
   return (
     <>
       <h1>Todo</h1>
-      <input placeholder="add task" value={inputValue} onChange={(e) => setInputeValue(e.target.value)} />
+      <input placeholder="add task" value={text} onChange={(e) => setText(e.target.value)} />
       <button
         onClick={() => {
-          onAddTask(inputValue), setInputeValue("");
+          onAddTask(text), setText("");
         }}
       >
         Add
